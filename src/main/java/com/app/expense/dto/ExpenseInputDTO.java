@@ -1,6 +1,7 @@
 package com.app.expense.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class ExpenseInputDTO {
     private BigDecimal income = BigDecimal.ZERO;
 
     //Savings
+    private BigDecimal emergencyFund = BigDecimal.ZERO;
     private BigDecimal monthlySavings = BigDecimal.ZERO;
     private BigDecimal srs = BigDecimal.ZERO;
     private BigDecimal ssb = BigDecimal.ZERO;

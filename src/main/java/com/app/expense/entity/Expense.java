@@ -1,4 +1,5 @@
 package com.app.expense.entity;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -18,20 +19,24 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 public class Expense {
-    //Unique identifier for each record
+    // Unique identifier for each record
     @Id
     @Column(nullable = false, unique = true)
-    private LocalDate date; 
+    private LocalDate date;
 
-    //Income
+    // Income
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal income = BigDecimal.ZERO;
 
-    //Savings
+    // Savings
     @Builder.Default
     @Column(precision = 10, scale = 2)
-    private BigDecimal savings = BigDecimal.ZERO;
+    private BigDecimal emergencyFund = BigDecimal.ZERO;
+
+    @Builder.Default
+    @Column(precision = 10, scale = 2)
+    private BigDecimal monthlySavings = BigDecimal.ZERO;
 
     @Builder.Default
     @Column(precision = 10, scale = 2)
@@ -41,7 +46,7 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal ssb = BigDecimal.ZERO;
 
-    //Insurance
+    // Insurance
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal aiaPrimeLife = BigDecimal.ZERO;
@@ -54,20 +59,20 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal hsbcTermProtector = BigDecimal.ZERO;
 
-    //Bills & utilities
+    // Bills & utilities
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal mobilePhone = BigDecimal.ZERO;
 
     @Builder.Default
-    @Column(precision = 10, scale = 2)    
+    @Column(precision = 10, scale = 2)
     private BigDecimal internet = BigDecimal.ZERO;
 
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal electricity = BigDecimal.ZERO;
 
-    //Tax
+    // Tax
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal iras = BigDecimal.ZERO;
@@ -76,7 +81,7 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal propertyTax = BigDecimal.ZERO;
 
-    //Transport
+    // Transport
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal publicTransport = BigDecimal.ZERO;
@@ -85,7 +90,7 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal privateTransport = BigDecimal.ZERO;
 
-    //Food
+    // Food
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal breakfast = BigDecimal.ZERO;
@@ -98,12 +103,12 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal dinner = BigDecimal.ZERO;
 
-    //Groceries
+    // Groceries
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal groceries = BigDecimal.ZERO;
 
-    //Wants
+    // Wants
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal eatingOut = BigDecimal.ZERO;
@@ -128,7 +133,7 @@ public class Expense {
     @Column(precision = 10, scale = 2)
     private BigDecimal tech = BigDecimal.ZERO;
 
-    //Others
+    // Others
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal mortgage = BigDecimal.ZERO;
