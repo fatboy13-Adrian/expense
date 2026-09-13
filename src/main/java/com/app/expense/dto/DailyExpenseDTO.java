@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseInputDTO {
+public class DailyExpenseDTO {
     //Unique identifier for each record
     private LocalDate date;
 
@@ -20,7 +20,6 @@ public class ExpenseInputDTO {
 
     //Savings
     private BigDecimal emergencyFund = BigDecimal.ZERO;
-    private BigDecimal monthlySavings = BigDecimal.ZERO;
     private BigDecimal srs = BigDecimal.ZERO;
     private BigDecimal ssb = BigDecimal.ZERO;
 

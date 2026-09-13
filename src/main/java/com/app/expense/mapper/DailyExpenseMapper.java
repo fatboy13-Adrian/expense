@@ -1,26 +1,16 @@
 package com.app.expense.mapper;
-import java.time.YearMonth;
-
 import org.springframework.stereotype.Component;
 
-import com.app.expense.calculator.Calculator;
-import com.app.expense.dto.ExpenseInputDTO;
-import com.app.expense.dto.ExpenseOutputDTO;
-import com.app.expense.entity.Expense;
-
-import lombok.RequiredArgsConstructor;
+import com.app.expense.dto.DailyExpenseDTO;
+import com.app.expense.entity.DailyExpense;
 
 @Component
-@RequiredArgsConstructor
-public class ExpenseMapper {
-    private final Calculator calculator;
-
-    public Expense toEntity (ExpenseInputDTO dto) {
-        return Expense.builder()
+public class DailyExpenseMapper {
+    public DailyExpense toEntity (DailyExpenseDTO dto) {
+        return DailyExpense.builder()
         .date(dto.getDate())
         .income(dto.getIncome())
         .emergencyFund(dto.getEmergencyFund())
-        .monthlySavings(dto.getMonthlySavings())
         .srs(dto.getSrs())
         .ssb(dto.getSsb())
         .aiaPrimeLife(dto.getAiaPrimeLife())
@@ -52,24 +42,39 @@ public class ExpenseMapper {
         .build();
     }
 
-    public ExpenseOutputDTO toDto (Expense e) {
-        return ExpenseOutputDTO.builder()
-        .month(YearMonth.from(e.getDate()))
-        .income(calculator.calculateIncome(e))
-        .savings(calculator.calculateSavings(e))
-        .insurance(calculator.calculateInsurance(e))
-        .billsAndUtilities(calculator.calculateBillsAndUtilities(e))
-        .tax(calculator.calculateTax(e))
-        .transport(calculator.calculateTransport(e))
-        .food(calculator.calculateFood(e))
-        .groceries(e.getGroceries())
-        .wants(calculator.calculateWants(e))
-        .mortgage(e.getMortgage())
-        .debt(e.getDebt())
-        .parentsAllowance(e.getParentsAllowance())
-        .haircut(e.getHaircut())
-        .medical(e.getMedical())
-        .tithes(e.getTithes())
-        .build();
+    public DailyExpenseDTO toDto(DailyExpense e) {
+        return new DailyExpenseDTO(
+        e.getDate(),
+        e.getIncome(),
+        e.getEmergencyFund(),
+        e.getSrs(),
+        e.getSsb(),
+        e.getAiaPrimeLife(),
+        e.getHsbcCriticare(),
+        e.getHsbcTermProtector(),
+        e.getMobilePhone(),
+        e.getInternet(),
+        e.getElectricity(),
+        e.getIras(),
+        e.getPropertyTax(),
+        e.getPublicTransport(),
+        e.getPrivateTransport(),
+        e.getBreakfast(),
+        e.getLunch(),
+        e.getDinner(),
+        e.getGroceries(),
+        e.getEatingOut(),
+        e.getRecreational(),
+        e.getHoliday(),
+        e.getShopping(),
+        e.getSports(),
+        e.getTech(),
+        e.getMortgage(),
+        e.getDebt(),
+        e.getParentsAllowance(),
+        e.getHaircut(),
+        e.getMedical(),
+        e.getTithes()
+        );
     }
 }

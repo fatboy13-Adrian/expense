@@ -1,63 +1,35 @@
 package com.app.expense.dto;
 import java.math.BigDecimal;
+import java.time.YearMonth;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.YearMonth;
-import lombok.Builder;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseOutputDTO {
-    //Unique identifier for each record
+public class MonthlyExpenseDTO {
     private YearMonth month;
-
-    @Builder.Default
     private BigDecimal income = BigDecimal.ZERO;
-    
-    @Builder.Default
-    private BigDecimal savings = BigDecimal.ZERO;
-    
-    @Builder.Default
-    private BigDecimal insurance = BigDecimal.ZERO;
-    
-    @Builder.Default
+    private BigDecimal emergencyFund = BigDecimal.ZERO;
+    private BigDecimal srs = BigDecimal.ZERO;
+    private BigDecimal ssb = BigDecimal.ZERO;
+    private BigDecimal insurances = BigDecimal.ZERO;
     private BigDecimal billsAndUtilities = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal tax = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal transport = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal food = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal groceries = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal wants = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal mortgage = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal debt = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal parentsAllowance = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal haircut = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal medical = BigDecimal.ZERO;
-    
-    @Builder.Default
     private BigDecimal tithes = BigDecimal.ZERO;
+    private BigDecimal overspent = BigDecimal.ZERO;
+    private BigDecimal savings = BigDecimal.ZERO;
 }

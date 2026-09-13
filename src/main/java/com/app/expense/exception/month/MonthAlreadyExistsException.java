@@ -1,4 +1,4 @@
-package com.app.expense.exception;
+package com.app.expense.exception.month;
 import java.time.YearMonth;
 
 public class MonthAlreadyExistsException extends RuntimeException {

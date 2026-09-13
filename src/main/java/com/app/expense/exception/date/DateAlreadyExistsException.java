@@ -1,4 +1,4 @@
-package com.app.expense.exception;
+package com.app.expense.exception.date;
 import java.time.LocalDate;
 
 public class DateAlreadyExistsException extends RuntimeException {
