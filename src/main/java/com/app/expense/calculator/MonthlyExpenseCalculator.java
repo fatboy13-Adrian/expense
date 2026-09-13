@@ -95,13 +95,13 @@ public class MonthlyExpenseCalculator {
             food = food
             .add(de.getBreakfast())
             .add(de.getLunch())
-            .add(de.getDinner())
-            .add(de.getEatingOut());
+            .add(de.getDinner());
 
             groceries = groceries
             .add(de.getGroceries());
             
             wants = wants
+            .add(de.getEatingOut())
             .add(de.getRecreational())
             .add(de.getSports())
             .add(de.getTech())
@@ -152,7 +152,7 @@ public class MonthlyExpenseCalculator {
     }
 
     public BigDecimal calculateSavings(MonthlyExpenseDTO medto) {
-        // Group all outflows accurately matching your old file's layout structures
+        //Group all outflows accurately matching your old file's layout structures
         BigDecimal totalExpenses = medto
         .getEmergencyFund()
         .add(medto.getSsb())
@@ -179,28 +179,46 @@ public class MonthlyExpenseCalculator {
     public BigDecimal calculateOverspent(MonthlyExpenseDTO medto) {
         BigDecimal overspent = BigDecimal.ZERO;
         
-        if (medto.getTransport().compareTo(BigDecimal.valueOf(122.0)) > 0) {
-            overspent = overspent.add(medto.getTransport().subtract(BigDecimal.valueOf(122.0)));
+        if (medto.getTransport()
+        .compareTo(BigDecimal.valueOf(122.0)) > 0) {
+            overspent = overspent
+            .add(medto.getTransport()
+            .subtract(BigDecimal.valueOf(122.0)));
         }
 
-        if (medto.getFood().compareTo(BigDecimal.valueOf(500.0)) > 0) {
-            overspent = overspent.add(medto.getFood().subtract(BigDecimal.valueOf(500.0)));
+        if (medto.getFood()
+        .compareTo(BigDecimal.valueOf(500.0)) > 0) {
+            overspent = overspent
+            .add(medto.getFood()
+            .subtract(BigDecimal.valueOf(500.0)));
         }
 
-        if (medto.getGroceries().compareTo(BigDecimal.valueOf(100.0)) > 0) {
-            overspent = overspent.add(medto.getGroceries().subtract(BigDecimal.valueOf(100.0)));
+        if (medto.getGroceries()
+        .compareTo(BigDecimal.valueOf(100.0)) > 0) {
+            overspent = overspent
+            .add(medto.getGroceries()
+            .subtract(BigDecimal.valueOf(100.0)));
         }
 
-        if (medto.getHaircut().compareTo(BigDecimal.valueOf(15.0)) > 0) {
-            overspent = overspent.add(medto.getHaircut().subtract(BigDecimal.valueOf(15.0)));
+        if (medto.getHaircut()
+        .compareTo(BigDecimal.valueOf(15.0)) > 0) {
+            overspent = overspent
+            .add(medto.getHaircut()
+            .subtract(BigDecimal.valueOf(15.0)));
         }
 
-        if (medto.getMedical().compareTo(BigDecimal.valueOf(50.0)) > 0) {
-            overspent = overspent.add(medto.getMedical().subtract(BigDecimal.valueOf(50.0)));
+        if (medto.getMedical()
+        .compareTo(BigDecimal.valueOf(50.0)) > 0) {
+            overspent = overspent
+            .add(medto.getMedical()
+            .subtract(BigDecimal.valueOf(50.0)));
         }
         
-        if (medto.getWants().compareTo(BigDecimal.valueOf(600.0)) > 0) {
-            overspent = overspent.add(medto.getWants().subtract(BigDecimal.valueOf(600.0)));
+        if (medto.getWants()
+        .compareTo(BigDecimal.valueOf(600.0)) > 0) {
+            overspent = overspent
+            .add(medto.getWants()
+            .subtract(BigDecimal.valueOf(600.0)));
         }
 
         return overspent;
