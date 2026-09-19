@@ -14,6 +14,8 @@ import lombok.Setter;
 public class MonthlyExpenseDTO {
     private YearMonth month;
     private BigDecimal income = BigDecimal.ZERO;
+    private BigDecimal cpf = BigDecimal.ZERO;
+    private BigDecimal cdac = BigDecimal.ZERO;
     private BigDecimal emergencyFund = BigDecimal.ZERO;
     private BigDecimal srs = BigDecimal.ZERO;
     private BigDecimal ssb = BigDecimal.ZERO;

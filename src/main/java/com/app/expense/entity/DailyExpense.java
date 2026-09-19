@@ -31,6 +31,16 @@ public class DailyExpense {
     @Column(precision = 10, scale = 2)
     private BigDecimal income = BigDecimal.ZERO;
 
+    //CPF
+    @Builder.Default
+    @Column(precision = 10, scale = 2)
+    private BigDecimal cpf = BigDecimal.ZERO;
+
+    //CDAC
+    @Builder.Default
+    @Column (precision = 10, scale = 2)
+    private BigDecimal cdac = BigDecimal.ZERO;
+
     //Savings
     @Builder.Default
     @Column(precision = 10, scale = 2)

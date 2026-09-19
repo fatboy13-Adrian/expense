@@ -19,14 +19,14 @@ import org.springframework.stereotype.Component;
 
 import com.app.expense.dto.MonthlyExpenseDTO;
 import com.app.expense.exception.ExportExcelFailedException;
-import com.app.expense.service.ExpenseService;
+import com.app.expense.service.monthly_expense.MonthlyExpenseService;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class MonthlyExpenseReportService {
-    private final ExpenseService svc;
+public class MonthlyExpenseReportSvc {
+    private final MonthlyExpenseService svc;
 
     public List<MonthlyExpenseDTO> getMonthRange(Year year) {
         //Initialize list to store monthly expense records
@@ -79,6 +79,8 @@ public class MonthlyExpenseReportService {
             String[] columns = {
                 "Month",
                 "Income",
+                "Cpf",
+                "Cdac",
                 "Emergency Fund",
                 "SRS",
                 "SSB",
@@ -123,6 +125,8 @@ public class MonthlyExpenseReportService {
                 //Store financial values
                 BigDecimal[] values = {
                     meDto.getIncome(),
+                    meDto.getCpf(),
+                    meDto.getCdac(),
                     meDto.getEmergencyFund(),
                     meDto.getSrs(),
                     meDto.getSsb(),

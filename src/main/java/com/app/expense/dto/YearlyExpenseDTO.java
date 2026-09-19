@@ -13,6 +13,8 @@ import lombok.Setter;
 public class YearlyExpenseDTO {
     private int year;
     private BigDecimal income = BigDecimal.ZERO;
+    private BigDecimal cpf = BigDecimal.ZERO;
+    private BigDecimal cdac = BigDecimal.ZERO;
     private BigDecimal emergencyFund = BigDecimal.ZERO;
     private BigDecimal srs = BigDecimal.ZERO;
     private BigDecimal ssb = BigDecimal.ZERO;

@@ -16,14 +16,14 @@ import org.springframework.stereotype.Component;
 
 import com.app.expense.dto.YearlyExpenseDTO;
 import com.app.expense.exception.ExportExcelFailedException;
-import com.app.expense.service.ExpenseService;
+import com.app.expense.service.yearly_expense.YearlyExpenseService;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class YearlyExpenseReportService {
-    private final ExpenseService svc;
+public class YearlyExpenseReportSvc {
+    private final YearlyExpenseService svc;
 
     public ByteArrayInputStream exportYearlyExpenseRecords () {
         //Retrieve all yearly expense records
@@ -60,6 +60,8 @@ public class YearlyExpenseReportService {
                 String[] columns = {
                         "Year",
                         "Income",
+                        "Cpf",
+                        "Cdac", 
                         "Emergency Fund",
                         "SRS",
                         "SSB",
@@ -103,6 +105,8 @@ public class YearlyExpenseReportService {
                         //Store financial values
                         BigDecimal[] values = {
                                 yeDto.getIncome(),
+                                yeDto.getCpf(),
+                                yeDto.getCdac(),
                                 yeDto.getEmergencyFund(),
                                 yeDto.getSrs(),
                                 yeDto.getSsb(),

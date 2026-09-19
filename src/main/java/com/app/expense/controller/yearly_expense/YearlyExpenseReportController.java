@@ -1,4 +1,4 @@
-package com.app.expense.controller;
+package com.app.expense.controller.yearly_expense;
 
 import java.io.ByteArrayInputStream;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.expense.report.YearlyExpenseReportService;
+import com.app.expense.report.YearlyExpenseReportSvc;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Expenses", description = "Expense Tracker")
 public class YearlyExpenseReportController {
         @Autowired
-        private YearlyExpenseReportService svc;
+        private YearlyExpenseReportSvc svc;
 
         @GetMapping("/yearly/export")
         @Operation(summary = "Export yearly expense records to Excel")

@@ -1,8 +1,6 @@
 package com.app.expense.controller;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.expense.dto.DailyExpenseDTO;
-import com.app.expense.dto.MonthlyExpenseDTO;
-import com.app.expense.dto.YearlyExpenseDTO;
-import com.app.expense.service.ExpenseService;
+import com.app.expense.service.daily_expense.DailyExpenseService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,9 +27,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping("/expenses")
 @CrossOrigin(origins = "http://localhost:3000")
 @Tag(name = "Expenses", description = "Endpoints for managing daily, monthly, and yearly expenses")
-public class ExpenseController {
+public class DailyExpenseController {
     @Autowired	
-    private ExpenseService svc;
+    private DailyExpenseService svc;
 
     @PostMapping("/create")
     @Operation(summary = "Add a new expense record")
@@ -53,24 +49,6 @@ public class ExpenseController {
         .retrieveByDate(date));
     }
 
-    @GetMapping("/month/{month}")
-    @Operation(summary = "Retrieve expense record by month")
-    public ResponseEntity<MonthlyExpenseDTO> retrieveByMonth 
-    (@PathVariable @DateTimeFormat
-    (pattern = "yyyy-MM") YearMonth month) {
-        return ResponseEntity
-        .ok(svc.retrieveByMonth(month));
-    }
-
-    @GetMapping("/year/{year}")
-    @Operation(summary = "Retrieve expense record by year")
-    public ResponseEntity<YearlyExpenseDTO> retrieveByYear
-    (@PathVariable int year) {
-        return ResponseEntity
-        .ok(svc
-        .retrieveByYear(year));
-    }
-
     @GetMapping("/dates")
     @Operation(summary = "Retrieve a paginated list of daily expense records")
     public ResponseEntity<Page<DailyExpenseDTO>> retrieveAllDates
@@ -79,24 +57,6 @@ public class ExpenseController {
         return ResponseEntity
         .ok(svc
         .retrieveAllDates(page, size));
-    }
-
-    @GetMapping("/months")
-    @Operation(summary = "Retrieve a paginated list of monthly expense summaries")
-    public ResponseEntity<Page<MonthlyExpenseDTO>> retrieveAllMonths
-    (@RequestParam(defaultValue = "1") int page, 
-    @RequestParam(defaultValue = "10") int size) {
-        return ResponseEntity
-        .ok(svc
-        .retrieveAllMonths(page, size));
-    }
-
-    @GetMapping("/years")
-    @Operation(summary = "Retrieve all historical yearly expense summaries")
-    public ResponseEntity<List<YearlyExpenseDTO>> retrieveAllYears () {
-        return ResponseEntity
-        .ok(svc
-        .retrieveAllYears());
     }
 
     @PutMapping("/date/{date}")

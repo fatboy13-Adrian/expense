@@ -15,6 +15,8 @@ public class YearlyExpenseCalculator {
     public void calculateYearlyExpenses (YearlyExpenseDTO yedto, List <MonthlyExpenseDTO> me) {
         //Intialize all variables to 0.0
         BigDecimal income = BigDecimal.ZERO;
+        BigDecimal cpf = BigDecimal.ZERO;
+        BigDecimal cdac = BigDecimal.ZERO;
         BigDecimal emergencyFund = BigDecimal.ZERO;
         BigDecimal srs = BigDecimal.ZERO;
         BigDecimal ssb = BigDecimal.ZERO;
@@ -38,6 +40,12 @@ public class YearlyExpenseCalculator {
         for (MonthlyExpenseDTO medto : me) {
             income = income
             .add(medto.getIncome());
+
+            cpf = cpf
+            .add(medto.getCpf());
+
+            cdac = cdac
+            .add(medto.getCdac());
 
             //Savings
             emergencyFund = emergencyFund
@@ -94,6 +102,8 @@ public class YearlyExpenseCalculator {
 
         //Store calculated values into yearly expenses
         yedto.setIncome(income);
+        yedto.setCpf(cpf);
+        yedto.setCdac(cdac);
         yedto.setEmergencyFund(emergencyFund);
         yedto.setSrs(srs);
         yedto.setSsb(ssb);

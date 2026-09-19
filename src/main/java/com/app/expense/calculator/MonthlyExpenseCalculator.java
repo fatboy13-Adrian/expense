@@ -58,6 +58,8 @@ public class MonthlyExpenseCalculator {
         .findFirst()
         .orElse(BigDecimal.ZERO);
 
+        BigDecimal cpf = BigDecimal.ZERO;
+        BigDecimal cdac = BigDecimal.ZERO;
         BigDecimal insurances = BigDecimal.ZERO;
         BigDecimal billsAndUtilities = BigDecimal.ZERO;
         BigDecimal tax = BigDecimal.ZERO;
@@ -74,6 +76,12 @@ public class MonthlyExpenseCalculator {
 
         //Loop exclusively through standard daily operational cash outflows
         for (DailyExpense de : deList) {
+            cpf = cpf
+            .add(de.getCpf());
+
+            cdac = cdac
+            .add(de.getCdac());
+
             insurances = insurances
             .add(de.getAiaPrimeLife())
             .add(de.getHsbcCriticare())
@@ -129,6 +137,8 @@ public class MonthlyExpenseCalculator {
 
         //Populate your metrics cleanly
         medto.setIncome(income);
+        medto.setCpf(cpf);
+        medto.setCdac(cdac);
         medto.setEmergencyFund(emergencyFund);
         medto.setSsb(ssb);
         medto.setSrs(srs);
@@ -146,7 +156,7 @@ public class MonthlyExpenseCalculator {
         medto.setMedical(medical);
         medto.setTithes(tithes);
 
-        // Run updated calculations
+        //Run updated calculations
         medto.setSavings(calculateSavings(medto));
         medto.setOverspent(calculateOverspent(medto));
     }
@@ -155,6 +165,8 @@ public class MonthlyExpenseCalculator {
         //Group all outflows accurately matching your old file's layout structures
         BigDecimal totalExpenses = medto
         .getEmergencyFund()
+        .add(medto.getCpf())
+        .add(medto.getCdac())
         .add(medto.getSsb())
         .add(medto.getSrs())
         .add(medto.getInsurances())
@@ -178,49 +190,57 @@ public class MonthlyExpenseCalculator {
 
     public BigDecimal calculateOverspent(MonthlyExpenseDTO medto) {
         BigDecimal overspent = BigDecimal.ZERO;
+        BigDecimal maxWants = medto.getIncome()
+        .multiply(BigDecimal.valueOf(0.20));
         
-        if (medto.getTransport()
-        .compareTo(BigDecimal.valueOf(122.0)) > 0) {
-            overspent = overspent
-            .add(medto.getTransport()
-            .subtract(BigDecimal.valueOf(122.0)));
-        }
+        //Calculate overspent if year is 2026 or beyond
+        if (medto.getMonth().getYear() >= 2026) {
+            if (medto.getTransport()
+            .compareTo(BigDecimal.valueOf(122.0)) > 0) {
+                overspent = overspent
+                .add(medto.getTransport()
+                .subtract(BigDecimal.valueOf(122.0)));
+            }
 
-        if (medto.getFood()
-        .compareTo(BigDecimal.valueOf(500.0)) > 0) {
-            overspent = overspent
-            .add(medto.getFood()
-            .subtract(BigDecimal.valueOf(500.0)));
-        }
+            if (medto.getFood()
+            .compareTo(BigDecimal.valueOf(500.0)) > 0) {
+                overspent = overspent
+                .add(medto.getFood()
+                .subtract(BigDecimal.valueOf(500.0)));
+            }
 
-        if (medto.getGroceries()
-        .compareTo(BigDecimal.valueOf(100.0)) > 0) {
-            overspent = overspent
-            .add(medto.getGroceries()
-            .subtract(BigDecimal.valueOf(100.0)));
-        }
+            if (medto.getGroceries()
+            .compareTo(BigDecimal.valueOf(100.0)) > 0) {
+                overspent = overspent
+                .add(medto.getGroceries()
+                .subtract(BigDecimal.valueOf(100.0)));
+            }
 
-        if (medto.getHaircut()
-        .compareTo(BigDecimal.valueOf(15.0)) > 0) {
-            overspent = overspent
-            .add(medto.getHaircut()
-            .subtract(BigDecimal.valueOf(15.0)));
-        }
+            if (medto.getHaircut()
+            .compareTo(BigDecimal.valueOf(15.0)) > 0) {
+                overspent = overspent
+                .add(medto.getHaircut()
+                .subtract(BigDecimal.valueOf(15.0)));
+            }
 
-        if (medto.getMedical()
-        .compareTo(BigDecimal.valueOf(50.0)) > 0) {
-            overspent = overspent
-            .add(medto.getMedical()
-            .subtract(BigDecimal.valueOf(50.0)));
+            if (medto.getMedical()
+            .compareTo(BigDecimal.valueOf(50.0)) > 0) {
+                overspent = overspent
+                .add(medto.getMedical()
+                .subtract(BigDecimal.valueOf(50.0)));
+            }
+            
+            //If wants is more than 20% of income or $600
+            if (medto.getWants()
+            .compareTo(maxWants) > 0 ||
+            medto.getWants()
+            .compareTo(BigDecimal.valueOf(600.0)) > 0) {
+                overspent = overspent
+                .add(medto.getWants()
+                .subtract(BigDecimal.valueOf(600.0)));
+            }
         }
         
-        if (medto.getWants()
-        .compareTo(BigDecimal.valueOf(600.0)) > 0) {
-            overspent = overspent
-            .add(medto.getWants()
-            .subtract(BigDecimal.valueOf(600.0)));
-        }
-
         return overspent;
     }
 }
