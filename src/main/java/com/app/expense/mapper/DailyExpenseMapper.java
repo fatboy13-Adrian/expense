@@ -44,7 +44,7 @@ public class DailyExpenseMapper {
         .build();
     }
 
-    public DailyExpenseDTO toDto(DailyExpense e) {
+    public DailyExpenseDTO toDto (DailyExpense e) {
         return new DailyExpenseDTO(
         e.getDate(),
         e.getIncome(),

@@ -1,6 +1,7 @@
 package com.app.expense.calculator;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -17,8 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class MonthlyExpenseCalculator {
     private final DailyExpenseRepository repository;
 
-    public void calculateMonthlyExpenses
-    (MonthlyExpenseDTO medto) {
+    public void calculateMonthlyExpenses (MonthlyExpenseDTO medto) {
         YearMonth month = medto.getMonth();
 
         //Fetch all daily transactions for the specified month target
@@ -137,7 +137,6 @@ public class MonthlyExpenseCalculator {
 
         //Populate your metrics cleanly
         medto.setIncome(income);
-        medto.setCpf(cpf);
         medto.setCdac(cdac);
         medto.setEmergencyFund(emergencyFund);
         medto.setSsb(ssb);
@@ -157,11 +156,19 @@ public class MonthlyExpenseCalculator {
         medto.setTithes(tithes);
 
         //Run updated calculations
+        medto.setCpf(calculateCpf(medto));
         medto.setSavings(calculateSavings(medto));
         medto.setOverspent(calculateOverspent(medto));
     }
 
-    public BigDecimal calculateSavings(MonthlyExpenseDTO medto) {
+    public BigDecimal calculateCpf (MonthlyExpenseDTO medto) {
+        //CPF = 20% of monthly income
+        BigDecimal cpf = medto.getIncome()
+        .multiply(BigDecimal.valueOf(0.20));
+        return cpf.setScale(0, RoundingMode.DOWN);
+    }
+
+    public BigDecimal calculateSavings (MonthlyExpenseDTO medto) {
         //Group all outflows accurately matching your old file's layout structures
         BigDecimal totalExpenses = medto
         .getEmergencyFund()
@@ -188,7 +195,7 @@ public class MonthlyExpenseCalculator {
         .subtract(totalExpenses);
     }
 
-    public BigDecimal calculateOverspent(MonthlyExpenseDTO medto) {
+    public BigDecimal calculateOverspent (MonthlyExpenseDTO medto) {
         BigDecimal overspent = BigDecimal.ZERO;
         BigDecimal maxWants = medto.getIncome()
         .multiply(BigDecimal.valueOf(0.20));

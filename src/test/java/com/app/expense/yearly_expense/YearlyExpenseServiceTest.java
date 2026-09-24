@@ -129,7 +129,7 @@ public class YearlyExpenseServiceTest {
         .thenReturn(medto);
 
         //Act
-        List<YearlyExpenseDTO> resultList = 
+        List <YearlyExpenseDTO> resultList = 
         svc.retrieveAllYears();
 
         //Assert
@@ -147,7 +147,7 @@ public class YearlyExpenseServiceTest {
         .thenReturn(List.of());
 
         //Act: Invoke service method
-        List<YearlyExpenseDTO> resultList = 
+        List <YearlyExpenseDTO> resultList = 
         svc.retrieveAllYears();
 
         /**Assert: Verify that a valid, 

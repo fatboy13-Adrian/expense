@@ -14,7 +14,7 @@ public class YearlyExpenseController {
 
     @GetMapping("/year/{year}")
     @Operation(summary = "Retrieve expense record by year")
-    public ResponseEntity<YearlyExpenseDTO> retrieveByYear
+    public ResponseEntity <YearlyExpenseDTO> retrieveByYear
     (@PathVariable int year) {
         return ResponseEntity
         .ok(svc
@@ -23,7 +23,7 @@ public class YearlyExpenseController {
 
     @GetMapping("/years")
     @Operation(summary = "Retrieve all historical yearly expense summaries")
-    public ResponseEntity<List<YearlyExpenseDTO>> retrieveAllYears () {
+    public ResponseEntity <List <YearlyExpenseDTO>> retrieveAllYears () {
         return ResponseEntity
         .ok(svc
         .retrieveAllYears());

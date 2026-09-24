@@ -28,9 +28,9 @@ import lombok.RequiredArgsConstructor;
 public class MonthlyExpenseReportSvc {
     private final MonthlyExpenseService svc;
 
-    public List<MonthlyExpenseDTO> getMonthRange(Year year) {
+    public List <MonthlyExpenseDTO> getMonthRange (Year year) {
         //Initialize list to store monthly expense records
-        List<MonthlyExpenseDTO> medto =
+        List <MonthlyExpenseDTO> medto =
         new ArrayList<>();
 
         //Calculate expenses for each month from January to December
@@ -47,7 +47,7 @@ public class MonthlyExpenseReportSvc {
     }
 
     private ByteArrayInputStream buildMonthlyExpenseExcel (
-    List<MonthlyExpenseDTO> medto, String sheetName) {
+    List <MonthlyExpenseDTO> medto, String sheetName) {
         try (Workbook workbook = new XSSFWorkbook();
         ByteArrayOutputStream output =
         new ByteArrayOutputStream()) {
@@ -182,7 +182,7 @@ public class MonthlyExpenseReportSvc {
 
     public ByteArrayInputStream exportMonthlyExpenseRecords (Year year) {
         //Retrieve monthly expense records
-        List<MonthlyExpenseDTO> medto = getMonthRange(year);
+        List <MonthlyExpenseDTO> medto = getMonthRange(year);
 
         //Build & return Excel file
         return buildMonthlyExpenseExcel(

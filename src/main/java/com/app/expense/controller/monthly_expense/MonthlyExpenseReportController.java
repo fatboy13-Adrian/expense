@@ -29,8 +29,8 @@ public class MonthlyExpenseReportController {
 
     @GetMapping("/export/{year}")
     @Operation(summary = "Export monthly expense records to Excel")
-    public ResponseEntity<InputStreamResource>
-    exportMonthlyExpenseReport(@PathVariable Year year) {
+    public ResponseEntity <InputStreamResource>
+    exportMonthlyExpenseReport (@PathVariable Year year) {
         /**Generate Excel file from report service
          *& wrap it as an input stream resource*/
         ByteArrayInputStream file = svc.exportMonthlyExpenseRecords(year);

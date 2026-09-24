@@ -8,9 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.app.expense.dto.MonthlyExpenseDTO;
 import com.app.expense.service.monthly_expense.MonthlyExpenseService;
 
@@ -27,7 +28,7 @@ public class MonthlyExpenseController {
 
     @GetMapping("/month/{month}")
     @Operation(summary = "Retrieve expense record by month")
-    public ResponseEntity<MonthlyExpenseDTO> retrieveByMonth 
+    public ResponseEntity <MonthlyExpenseDTO> retrieveByMonth 
     (@PathVariable @DateTimeFormat
     (pattern = "yyyy-MM") YearMonth month) {
         return ResponseEntity
@@ -36,7 +37,7 @@ public class MonthlyExpenseController {
 
     @GetMapping("/months")
     @Operation(summary = "Retrieve a paginated list of monthly expense summaries")
-    public ResponseEntity<Page<MonthlyExpenseDTO>> retrieveAllMonths
+    public ResponseEntity <Page <MonthlyExpenseDTO>> retrieveAllMonths
     (@RequestParam(defaultValue = "1") int page, 
     @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity

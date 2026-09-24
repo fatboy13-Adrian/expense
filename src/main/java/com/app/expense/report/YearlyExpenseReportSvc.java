@@ -34,7 +34,7 @@ public class YearlyExpenseReportSvc {
     }
 
     private ByteArrayInputStream buildYearlyExpenseExcel
-    (List<YearlyExpenseDTO> yedtos) {
+    (List <YearlyExpenseDTO> yedtos) {
         try (Workbook workbook = new XSSFWorkbook();
         ByteArrayOutputStream output = new ByteArrayOutputStream()) {
                 //Create worksheet

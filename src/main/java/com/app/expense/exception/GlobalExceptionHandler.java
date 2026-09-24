@@ -15,8 +15,8 @@ import com.app.expense.exception.month.MonthNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    private ResponseEntity<Object> buildResponse(HttpStatus status, String message) {
-        Map<String, Object> body = new HashMap<>();
+    private ResponseEntity <Object> buildResponse (HttpStatus status, String message) {
+        Map <String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", status.value());
         body.put("error", status.getReasonPhrase());
@@ -25,37 +25,37 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MonthNotFoundException.class)
-    public ResponseEntity<Object> handleMonthNotFound(MonthNotFoundException ex) {
+    public ResponseEntity <Object> handleMonthNotFound (MonthNotFoundException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
     @ExceptionHandler(MonthAlreadyExistsException.class)
-    public ResponseEntity<Object> handleMonthAlreadyExists(MonthAlreadyExistsException ex) {
+    public ResponseEntity <Object> handleMonthAlreadyExists (MonthAlreadyExistsException ex) {
         return buildResponse(HttpStatus.CONFLICT, ex.getMessage());
     }
 
     @ExceptionHandler(ExpenseNotFoundException.class)
-    public ResponseEntity<Object> handleExpenseNotFound(ExpenseNotFoundException ex) {
+    public ResponseEntity <Object> handleExpenseNotFound (ExpenseNotFoundException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
     @ExceptionHandler(DateNotFoundException.class)
-    public ResponseEntity<Object> handleDateNotFound(DateNotFoundException ex) {
+    public ResponseEntity <Object> handleDateNotFound (DateNotFoundException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
     @ExceptionHandler(DateAlreadyExistsException.class)
-    public ResponseEntity<Object> handleDateAlreadyExists(DateAlreadyExistsException ex) {
+    public ResponseEntity <Object> handleDateAlreadyExists (DateAlreadyExistsException ex) {
         return buildResponse(HttpStatus.CONFLICT, ex.getMessage());
     }
 
     @ExceptionHandler(ExportExcelFailedException.class)
-    public ResponseEntity<Object> handleExportExcelFailed(ExportExcelFailedException ex) {
+    public ResponseEntity <Object> handleExportExcelFailed (ExportExcelFailedException ex) {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handleGeneric(Exception ex) {
+    public ResponseEntity <Object> handleGeneric (Exception ex) {
         return buildResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 "Unexpected error: " + ex.getMessage()

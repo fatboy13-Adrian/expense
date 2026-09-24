@@ -5,5 +5,5 @@ import com.app.expense.dto.MonthlyExpenseDTO;
 
 public interface MonthlyExpenseService {
     MonthlyExpenseDTO retrieveByMonth (YearMonth month);
-    Page <MonthlyExpenseDTO> retrieveAllMonths(int page, int size);
+    Page <MonthlyExpenseDTO> retrieveAllMonths (int page, int size);
 }
