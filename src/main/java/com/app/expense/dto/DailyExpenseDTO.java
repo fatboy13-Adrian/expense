@@ -18,10 +18,6 @@ public class DailyExpenseDTO {
     //Income
     private BigDecimal income = BigDecimal.ZERO;
 
-    //Deductions
-    private BigDecimal cpf = BigDecimal.ZERO;
-    private BigDecimal cdac = BigDecimal.ZERO;
-
     //Savings
     private BigDecimal emergencyFund = BigDecimal.ZERO;
     private BigDecimal srs = BigDecimal.ZERO;

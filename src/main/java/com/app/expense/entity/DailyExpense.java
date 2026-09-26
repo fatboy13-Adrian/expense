@@ -26,20 +26,10 @@ public class DailyExpense {
     @Column(nullable = false, unique = true)
     private LocalDate date;
 
-    //Income
+    //Income (Take home pay)
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal income = BigDecimal.ZERO;
-
-    //CPF
-    @Builder.Default
-    @Column(precision = 10, scale = 2)
-    private BigDecimal cpf = BigDecimal.ZERO;
-
-    //CDAC
-    @Builder.Default
-    @Column (precision = 10, scale = 2)
-    private BigDecimal cdac = BigDecimal.ZERO;
 
     //Savings
     @Builder.Default

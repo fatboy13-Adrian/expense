@@ -10,8 +10,6 @@ public class DailyExpenseMapper {
         return DailyExpense.builder()
         .date(dto.getDate())
         .income(dto.getIncome())
-        .cpf(dto.getCpf())
-        .cdac(dto.getCdac())
         .emergencyFund(dto.getEmergencyFund())
         .srs(dto.getSrs())
         .ssb(dto.getSsb())
@@ -48,8 +46,6 @@ public class DailyExpenseMapper {
         return new DailyExpenseDTO(
         e.getDate(),
         e.getIncome(),
-        e.getCpf(),
-        e.getCdac(),
         e.getEmergencyFund(),
         e.getSrs(),
         e.getSsb(),

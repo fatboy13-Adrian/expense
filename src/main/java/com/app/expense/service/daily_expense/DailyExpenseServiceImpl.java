@@ -61,8 +61,6 @@ public class DailyExpenseServiceImpl implements DailyExpenseService {
     private void updateDailyExpense(DailyExpense de, DailyExpenseDTO dto) {
         de.setIncome(dto.getIncome());
         de.setEmergencyFund(dto.getEmergencyFund());
-        de.setCpf(dto.getCpf());
-        de.setCdac(dto.getCdac());
         de.setSsb(dto.getSsb());
         de.setSrs(dto.getSrs());
         de.setAiaPrimeLife(dto.getAiaPrimeLife());

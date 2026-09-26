@@ -21,7 +21,8 @@ public class MonthlyExpenseCalculator {
     public void calculateMonthlyExpenses (MonthlyExpenseDTO medto) {
         YearMonth month = medto.getMonth();
 
-        //Fetch all daily transactions for the specified month target
+        /*Fetch all daily transactions 
+        for specified month target*/
         List<DailyExpense> deList = repository
         .findByDateBetween(month
         .atDay(1), 
@@ -29,7 +30,8 @@ public class MonthlyExpenseCalculator {
         .atEndOfMonth()
         );
 
-        //Pull unique core allocations directly without multiplying inside daily iterations
+        /*Pull unique core allocations directly 
+        without multiplying inside daily iterations*/
         BigDecimal income = deList
         .stream()
         .map(DailyExpense::getIncome)
@@ -58,8 +60,6 @@ public class MonthlyExpenseCalculator {
         .findFirst()
         .orElse(BigDecimal.ZERO);
 
-        BigDecimal cpf = BigDecimal.ZERO;
-        BigDecimal cdac = BigDecimal.ZERO;
         BigDecimal insurances = BigDecimal.ZERO;
         BigDecimal billsAndUtilities = BigDecimal.ZERO;
         BigDecimal tax = BigDecimal.ZERO;
@@ -74,14 +74,9 @@ public class MonthlyExpenseCalculator {
         BigDecimal medical = BigDecimal.ZERO;
         BigDecimal tithes = BigDecimal.ZERO;
 
-        //Loop exclusively through standard daily operational cash outflows
+        /*Loop exclusively through standard 
+        daily operational cash outflows*/
         for (DailyExpense de : deList) {
-            cpf = cpf
-            .add(de.getCpf());
-
-            cdac = cdac
-            .add(de.getCdac());
-
             insurances = insurances
             .add(de.getAiaPrimeLife())
             .add(de.getHsbcCriticare())
@@ -137,7 +132,6 @@ public class MonthlyExpenseCalculator {
 
         //Populate your metrics cleanly
         medto.setIncome(income);
-        medto.setCdac(cdac);
         medto.setEmergencyFund(emergencyFund);
         medto.setSsb(ssb);
         medto.setSrs(srs);
@@ -156,7 +150,6 @@ public class MonthlyExpenseCalculator {
         medto.setTithes(tithes);
 
         //Run updated calculations
-        medto.setCpf(calculateCpf(medto));
         medto.setSavings(calculateSavings(medto));
         medto.setOverspent(calculateOverspent(medto));
     }
@@ -197,8 +190,16 @@ public class MonthlyExpenseCalculator {
 
     public BigDecimal calculateOverspent (MonthlyExpenseDTO medto) {
         BigDecimal overspent = BigDecimal.ZERO;
+
+        /*
+        These variables should be kept at a certain % of
+        take home income
+        1. Wants: 20%
+        2. Tithes: 10% */
         BigDecimal maxWants = medto.getIncome()
         .multiply(BigDecimal.valueOf(0.20));
+        BigDecimal maxTithes = medto.getIncome()
+        .multiply(BigDecimal.valueOf(0.10));
         
         //Calculate overspent if year is 2026 or beyond
         if (medto.getMonth().getYear() >= 2026) {
@@ -245,6 +246,13 @@ public class MonthlyExpenseCalculator {
                 overspent = overspent
                 .add(medto.getWants()
                 .subtract(BigDecimal.valueOf(600.0)));
+            }
+
+            //If tithes is more than 10% of income
+            if (medto.getTithes().compareTo(maxTithes) > 0) {
+                overspent = overspent
+                .add(medto.getTithes()
+                .subtract(maxTithes));
             }
         }
         
