@@ -25,7 +25,7 @@ import com.app.expense.report.YearlyExpenseReportSvc;
 import com.app.expense.service.yearly_expense.YearlyExpenseService;
 
 @ExtendWith(MockitoExtension.class)
-class YearlyExpenseReportSvcTest {
+class YearlyExpenseReportServiceTest {
         @InjectMocks
         private YearlyExpenseReportSvc reportSvc;
 

@@ -30,7 +30,7 @@ import com.app.expense.report.MonthlyExpenseReportSvc;
 import com.app.expense.service.monthly_expense.MonthlyExpenseService;
 
 @ExtendWith(MockitoExtension.class)
-class MonthlyExpenseReportSvcTest {
+class MonthlyExpenseReportServiceTest {
     @Mock
     private MonthlyExpenseService svc;
 
