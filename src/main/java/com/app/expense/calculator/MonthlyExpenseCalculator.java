@@ -1,5 +1,4 @@
 package com.app.expense.calculator;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.YearMonth;
@@ -81,28 +80,22 @@ public class MonthlyExpenseCalculator {
             .add(de.getAiaPrimeLife())
             .add(de.getHsbcCriticare())
             .add(de.getHsbcTermProtector());
-
             billsAndUtilities = billsAndUtilities
             .add(de.getMobilePhone())
             .add(de.getElectricity())
             .add(de.getInternet());
-
             tax = tax
             .add(de.getPropertyTax())
             .add(de.getIras());
-
             transport = transport
             .add(de.getPublicTransport())
             .add(de.getPrivateTransport());
-
             food = food
             .add(de.getBreakfast())
             .add(de.getLunch())
             .add(de.getDinner());
-
             groceries = groceries
             .add(de.getGroceries());
-            
             wants = wants
             .add(de.getEatingOut())
             .add(de.getRecreational())
@@ -110,27 +103,22 @@ public class MonthlyExpenseCalculator {
             .add(de.getTech())
             .add(de.getHoliday())
             .add(de.getShopping());
-
             mortgage = mortgage
             .add(de.getMortgage());
-
             debt = debt
             .add(de.getDebt());
-
             parentsAllowance = parentsAllowance
             .add(de.getParentsAllowance());
-
             haircut = haircut
             .add(de.getHaircut());
-
             medical = medical
             .add(de.getMedical());
-
             tithes = tithes
             .add(de.getTithes());
         }
 
-        //Populate your metrics cleanly
+        /*Populate your metrics cleanly &
+        run updated calculation*/
         medto.setIncome(income);
         medto.setEmergencyFund(emergencyFund);
         medto.setSsb(ssb);
@@ -148,8 +136,6 @@ public class MonthlyExpenseCalculator {
         medto.setHaircut(haircut);
         medto.setMedical(medical);
         medto.setTithes(tithes);
-
-        //Run updated calculations
         medto.setSavings(calculateSavings(medto));
         medto.setOverspent(calculateOverspent(medto));
     }
@@ -182,7 +168,6 @@ public class MonthlyExpenseCalculator {
         .add(medto.getHaircut())
         .add(medto.getMedical())
         .add(medto.getTithes());
-
         return medto
         .getIncome()
         .subtract(totalExpenses);
@@ -238,9 +223,7 @@ public class MonthlyExpenseCalculator {
                 .subtract(BigDecimal.valueOf(50.0)));
             }
             
-            //If wants is more than 20% of income or $600
-            if (medto.getWants()
-            .compareTo(maxWants) > 0 ||
+            if (medto.getWants().compareTo(maxWants) > 0 ||
             medto.getWants()
             .compareTo(BigDecimal.valueOf(600.0)) > 0) {
                 overspent = overspent
@@ -248,7 +231,6 @@ public class MonthlyExpenseCalculator {
                 .subtract(BigDecimal.valueOf(600.0)));
             }
 
-            //If tithes is more than 10% of income
             if (medto.getTithes().compareTo(maxTithes) > 0) {
                 overspent = overspent
                 .add(medto.getTithes()

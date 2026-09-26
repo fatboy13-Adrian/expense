@@ -35,11 +35,9 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal emergencyFund = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal srs = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal ssb = BigDecimal.ZERO;
@@ -48,11 +46,9 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal aiaPrimeLife = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal hsbcCriticare = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal hsbcTermProtector = BigDecimal.ZERO;
@@ -61,11 +57,9 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal mobilePhone = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal internet = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal electricity = BigDecimal.ZERO;
@@ -74,7 +68,6 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal iras = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal propertyTax = BigDecimal.ZERO;
@@ -83,7 +76,6 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal publicTransport = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal privateTransport = BigDecimal.ZERO;
@@ -92,11 +84,9 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal breakfast = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal lunch = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal dinner = BigDecimal.ZERO;
@@ -110,23 +100,18 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal eatingOut = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal recreational = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal holiday = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal shopping = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal sports = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal tech = BigDecimal.ZERO;
@@ -135,23 +120,18 @@ public class DailyExpense {
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal mortgage = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal debt = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal parentsAllowance = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal haircut = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal medical = BigDecimal.ZERO;
-
     @Builder.Default
     @Column(precision = 10, scale = 2)
     private BigDecimal tithes = BigDecimal.ZERO;

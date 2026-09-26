@@ -58,7 +58,7 @@ public class DailyExpenseServiceImpl implements DailyExpenseService {
         return mapper.toDto(updated);
     }
 
-    private void updateDailyExpense(DailyExpense de, DailyExpenseDTO dto) {
+    private void updateDailyExpense (DailyExpense de, DailyExpenseDTO dto) {
         de.setIncome(dto.getIncome());
         de.setEmergencyFund(dto.getEmergencyFund());
         de.setSsb(dto.getSsb());

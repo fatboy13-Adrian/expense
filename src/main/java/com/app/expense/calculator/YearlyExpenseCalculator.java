@@ -40,14 +40,6 @@ public class YearlyExpenseCalculator {
         for (MonthlyExpenseDTO medto : me) {
             income = income
             .add(medto.getIncome());
-
-            cpf = cpf
-            .add(medto.getCpf());
-
-            cdac = cdac
-            .add(medto.getCdac());
-
-            //Savings
             emergencyFund = emergencyFund
             .add(medto.getEmergencyFund());
             srs = srs
@@ -56,34 +48,20 @@ public class YearlyExpenseCalculator {
             .add(medto.getSsb());
             savings = savings
             .add(medto.getSavings());
-
-            //Insurances
             insurances = insurances
             .add(medto.getInsurances());
-
-            //Bills & utilities
             billsAndUtilities = billsAndUtilities
             .add(medto.getBillsAndUtilities());
-
-            //Tax
             tax = tax
             .add(medto.getTax());
-
-            //Transport
             transport = transport
             .add(medto.getTransport());
-
-            //Food & groceries
             food = food
             .add(medto.getFood());
             groceries = groceries
             .add(medto.getGroceries());
-
-            //Wants
             wants = wants
             .add(medto.getWants());
-
-            //Other fields
             mortgage = mortgage
             .add(medto.getMortgage());
             debt = debt

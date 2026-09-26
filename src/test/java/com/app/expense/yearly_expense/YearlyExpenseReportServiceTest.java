@@ -197,7 +197,7 @@ class YearlyExpenseReportServiceTest {
                 assertNotNull(exception);
         }
 
-        private YearlyExpenseDTO createYearlyExpenseDTO() {
+        private YearlyExpenseDTO createYearlyExpenseDTO () {
                 YearlyExpenseDTO dto =
                 new YearlyExpenseDTO();
                 dto.setYear(2026);

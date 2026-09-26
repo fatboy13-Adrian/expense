@@ -154,8 +154,8 @@ public class YearlyExpenseReportSvc {
                 return new ByteArrayInputStream(output.toByteArray());
         } catch (Exception e) {
                 //Handle Excel export failure
-                throw new ExportExcelFailedException(
-                "Failed to export yearly expense records", e);
+                throw new ExportExcelFailedException
+                ("Failed to export yearly expense records", e);
         }
     }
 }
