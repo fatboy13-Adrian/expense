@@ -60,8 +60,6 @@ public class YearlyExpenseReportSvc {
                 String[] columns = {
                         "Year",
                         "Income",
-                        "Cpf",
-                        "Cdac", 
                         "Emergency Fund",
                         "SRS",
                         "SSB",
@@ -105,8 +103,6 @@ public class YearlyExpenseReportSvc {
                         //Store financial values
                         BigDecimal[] values = {
                                 yeDto.getIncome(),
-                                yeDto.getCpf(),
-                                yeDto.getCdac(),
                                 yeDto.getEmergencyFund(),
                                 yeDto.getSrs(),
                                 yeDto.getSsb(),

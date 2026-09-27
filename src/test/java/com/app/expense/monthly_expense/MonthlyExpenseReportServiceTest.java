@@ -41,7 +41,6 @@ class MonthlyExpenseReportServiceTest {
         MonthlyExpenseDTO medto = new MonthlyExpenseDTO();
         medto.setMonth(YearMonth.of(2026, 1));
         medto.setIncome(new BigDecimal("5000.00"));
-        medto.setCpf(new BigDecimal("1000.00"));
         medto.setSavings(new BigDecimal("1500.00"));
         return medto;
     }

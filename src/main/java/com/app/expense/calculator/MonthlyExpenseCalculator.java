@@ -1,6 +1,5 @@
 package com.app.expense.calculator;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.YearMonth;
 import java.util.List;
 
@@ -140,19 +139,10 @@ public class MonthlyExpenseCalculator {
         medto.setOverspent(calculateOverspent(medto));
     }
 
-    public BigDecimal calculateCpf (MonthlyExpenseDTO medto) {
-        //CPF = 20% of monthly income
-        BigDecimal cpf = medto.getIncome()
-        .multiply(BigDecimal.valueOf(0.20));
-        return cpf.setScale(0, RoundingMode.DOWN);
-    }
-
     public BigDecimal calculateSavings (MonthlyExpenseDTO medto) {
         //Group all outflows accurately matching your old file's layout structures
         BigDecimal totalExpenses = medto
         .getEmergencyFund()
-        .add(medto.getCpf())
-        .add(medto.getCdac())
         .add(medto.getSsb())
         .add(medto.getSrs())
         .add(medto.getInsurances())

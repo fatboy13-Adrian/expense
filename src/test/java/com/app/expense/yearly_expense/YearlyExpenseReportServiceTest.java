@@ -202,8 +202,6 @@ class YearlyExpenseReportServiceTest {
                 new YearlyExpenseDTO();
                 dto.setYear(2026);
                 dto.setIncome(BigDecimal.valueOf(5000.00));
-                dto.setCpf(BigDecimal.valueOf(500.00));
-                dto.setCdac(BigDecimal.valueOf(100.00));
                 dto.setEmergencyFund(BigDecimal.valueOf(300.00));
                 dto.setSrs(BigDecimal.valueOf(200.00));
                 dto.setSsb(BigDecimal.valueOf(1000.00));

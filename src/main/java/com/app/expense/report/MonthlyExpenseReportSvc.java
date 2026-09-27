@@ -125,8 +125,6 @@ public class MonthlyExpenseReportSvc {
                 //Store financial values
                 BigDecimal[] values = {
                     meDto.getIncome(),
-                    meDto.getCpf(),
-                    meDto.getCdac(),
                     meDto.getEmergencyFund(),
                     meDto.getSrs(),
                     meDto.getSsb(),

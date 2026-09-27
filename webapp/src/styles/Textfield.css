@@ -1,0 +1,36 @@
+.form-row {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.form-input {
+  padding: 8px 12px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+  color: #000;
+  width: 300px;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.form-input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  color: #888;
+}
+
+.form-input:focus {
+  border-color: #333;
+}
