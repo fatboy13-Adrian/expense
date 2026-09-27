@@ -7,9 +7,7 @@ function cleanText(text) {
 }
 
 function formatMoney(value) {
-    if (value === null || value === undefined || value === "") 
-        return "-";
-
+    if (value === null || value === undefined || value === "") return "-";
     return `$${Number(value).toFixed(2)}`;
 }
 
@@ -21,8 +19,8 @@ export default function MonthlyExpenseTable ({monthlyExpenses = [], onUpdate, ac
     });
 
     return (
-        <div className= "monthlyExpense-table-wrapper">
-            <table className= "monthlyExpense-table">
+        <div className = "monthlyExpense-table-wrapper">
+            <table className = "monthlyExpense-table">
                 <thead>
                     <tr>
                         <th>Month</th>

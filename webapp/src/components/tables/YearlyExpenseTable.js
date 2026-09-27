@@ -7,16 +7,14 @@ function cleanText(text) {
 }
 
 function formatMoney(value) {
-    if (value === null || value === undefined || value === "") 
-        return "-";
-
+    if (value === null || value === undefined || value === "") return "-";
     return `$${Number(value).toFixed(2)}`;
 }
 
 export default function YearlyExpenseTable ({yearlyExpenses = [],}) {
     return (
-        <div className= "yearlyExpense-table-wrapper">
-            <table className= "yearlyExpense-table">
+        <div className = "yearlyExpense-table-wrapper">
+            <table className = "yearlyExpense-table">
                 <thead>
                     <tr>
                         <th>Month</th>

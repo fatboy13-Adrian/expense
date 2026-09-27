@@ -7,17 +7,17 @@ export default function SelectMonth
 
     return (
         <div>
-            <label htmlFor="input-month">
+            <label htmlFor = "input-month">
                 Select Month: 
             </label>
 
             <input
-                id="input-month"
-                type="month"
-                name={name}
-                value={value || ""}
-                onChange={onChange}
-                disabled={disabled}
+                id = "input-month"
+                type = "month"
+                name = {name}
+                value = {value || ""}
+                onChange = {onChange}
+                disabled = {disabled}
                 max = {sgMonth}
             />
         </div>

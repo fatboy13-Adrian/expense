@@ -7,9 +7,7 @@ function cleanText(text) {
 }
 
 function formatMoney(value) {
-    if (value === null || value === undefined || value === "") 
-        return "-";
-
+    if (value === null || value === undefined || value === "") return "-";
     return `$${Number(value).toFixed(2)}`;
 }
 
@@ -40,7 +38,7 @@ export default function DailyExpenseTable ({dailyExpenses = [] , onUpdate, actio
                 </thead>
 
                 <tbody>
-                    {(dailyExpenses || []).map((dailyExpense) =>(
+                    {(dailyExpenses || []).map((dailyExpense) => (
                         <tr key = {dailyExpense.date}>
                             <td>{cleanText(dailyExpense.date)}</td>
                             <td>{formatMoney(dailyExpense.publicTransport)}</td>
