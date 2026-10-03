@@ -27,6 +27,7 @@ public class YearlyExpenseCalculator {
         BigDecimal wants = BigDecimal.ZERO;
         BigDecimal mortgage = BigDecimal.ZERO;
         BigDecimal debt = BigDecimal.ZERO;
+        BigDecimal household = BigDecimal.ZERO;
         BigDecimal parentsAllowance = BigDecimal.ZERO;
         BigDecimal haircut = BigDecimal.ZERO;
         BigDecimal medical = BigDecimal.ZERO;
@@ -64,6 +65,8 @@ public class YearlyExpenseCalculator {
             .add(medto.getMortgage());
             debt = debt
             .add(medto.getDebt());
+            household = household
+            .add(medto.getHousehold());
             parentsAllowance = parentsAllowance
             .add(medto.getParentsAllowance());
             haircut = haircut
@@ -90,6 +93,7 @@ public class YearlyExpenseCalculator {
         yedto.setWants(wants);
         yedto.setMortgage(mortgage);
         yedto.setDebt(debt);
+        yedto.setHousehold(household);
         yedto.setParentsAllowance(parentsAllowance);
         yedto.setHaircut(haircut);
         yedto.setMedical(medical);

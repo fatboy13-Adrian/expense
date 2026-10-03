@@ -134,5 +134,8 @@ public class DailyExpense {
     private BigDecimal medical = BigDecimal.ZERO;
     @Builder.Default
     @Column(precision = 10, scale = 2)
+    private BigDecimal household = BigDecimal.ZERO;
+    @Builder.Default
+    @Column(precision = 10, scale = 2)
     private BigDecimal tithes = BigDecimal.ZERO;
 }

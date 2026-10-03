@@ -35,6 +35,7 @@ public class DailyExpenseMapper {
         .tech(dto.getTech())
         .mortgage(dto.getMortgage())
         .debt(dto.getDebt())
+        .household(dto.getHousehold())
         .parentsAllowance(dto.getParentsAllowance())
         .haircut(dto.getHaircut())
         .medical(dto.getMedical())
@@ -71,6 +72,7 @@ public class DailyExpenseMapper {
         e.getTech(),
         e.getMortgage(),
         e.getDebt(),
+        e.getHousehold(),
         e.getParentsAllowance(),
         e.getHaircut(),
         e.getMedical(),

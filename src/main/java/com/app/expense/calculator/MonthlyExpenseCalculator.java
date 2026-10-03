@@ -67,6 +67,7 @@ public class MonthlyExpenseCalculator {
         BigDecimal wants = BigDecimal.ZERO;
         BigDecimal mortgage = BigDecimal.ZERO;
         BigDecimal debt = BigDecimal.ZERO;
+        BigDecimal household = BigDecimal.ZERO;
         BigDecimal parentsAllowance = BigDecimal.ZERO;
         BigDecimal haircut = BigDecimal.ZERO;
         BigDecimal medical = BigDecimal.ZERO;
@@ -106,6 +107,8 @@ public class MonthlyExpenseCalculator {
             .add(de.getMortgage());
             debt = debt
             .add(de.getDebt());
+            household = household
+            .add(de.getHousehold());
             parentsAllowance = parentsAllowance
             .add(de.getParentsAllowance());
             haircut = haircut
@@ -131,6 +134,7 @@ public class MonthlyExpenseCalculator {
         medto.setWants(wants);
         medto.setMortgage(mortgage);
         medto.setDebt(debt);
+        medto.setHousehold(household);
         medto.setParentsAllowance(parentsAllowance);
         medto.setHaircut(haircut);
         medto.setMedical(medical);
@@ -154,6 +158,7 @@ public class MonthlyExpenseCalculator {
         .add(medto.getWants())
         .add(medto.getMortgage())
         .add(medto.getDebt())
+        .add(medto.getHousehold())
         .add(medto.getParentsAllowance())
         .add(medto.getHaircut())
         .add(medto.getMedical())
@@ -204,6 +209,13 @@ public class MonthlyExpenseCalculator {
                 overspent = overspent
                 .add(medto.getHaircut()
                 .subtract(BigDecimal.valueOf(15.0)));
+            }
+
+            if (medto.getHousehold()
+            .compareTo(BigDecimal.valueOf(100.0)) > 0) {
+                overspent = overspent
+                .add(medto.getHousehold())
+                .subtract(BigDecimal.valueOf(100.0));
             }
 
             if (medto.getMedical()

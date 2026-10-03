@@ -25,6 +25,7 @@ public class YearlyExpenseDTO {
     private BigDecimal wants = BigDecimal.ZERO;
     private BigDecimal mortgage = BigDecimal.ZERO;
     private BigDecimal debt = BigDecimal.ZERO;
+    private BigDecimal household = BigDecimal.ZERO;
     private BigDecimal parentsAllowance = BigDecimal.ZERO;
     private BigDecimal haircut = BigDecimal.ZERO;
     private BigDecimal medical = BigDecimal.ZERO;

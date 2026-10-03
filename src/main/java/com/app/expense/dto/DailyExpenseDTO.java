@@ -63,5 +63,6 @@ public class DailyExpenseDTO {
     private BigDecimal parentsAllowance = BigDecimal.ZERO;
     private BigDecimal haircut = BigDecimal.ZERO;
     private BigDecimal medical = BigDecimal.ZERO;
+    private BigDecimal household = BigDecimal.ZERO;
     private BigDecimal tithes = BigDecimal.ZERO;
 }

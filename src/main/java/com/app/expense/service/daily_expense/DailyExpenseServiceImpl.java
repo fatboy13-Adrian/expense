@@ -85,6 +85,7 @@ public class DailyExpenseServiceImpl implements DailyExpenseService {
         de.setTech(dto.getTech());
         de.setMortgage(dto.getMortgage());
         de.setDebt(dto.getDebt());
+        de.setHousehold(dto.getHousehold());
         de.setParentsAllowance(dto.getParentsAllowance());
         de.setHaircut(dto.getHaircut());
         de.setMedical(dto.getMedical());
