@@ -24,9 +24,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/expenses")
+@RequestMapping("/dailyExpenses")
 @CrossOrigin(origins = "http://localhost:3000")
-@Tag(name = "Expenses", description = "Endpoints for managing daily, monthly, and yearly expenses")
+@Tag(name = "Daily Expenses", description = "Endpoints for managing daily expenses")
 public class DailyExpenseController {
     @Autowired	
     private DailyExpenseService svc;
